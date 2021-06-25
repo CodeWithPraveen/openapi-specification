@@ -16,10 +16,10 @@ externalDocs:
   url: http://mycollege.com/api
   
 servers:
-  - url: http://localhost:44333/api/v1
+  - url: https://localhost:44333/api/v1
     description: Production server
     
-  - url: http://{hostname}:{port}/stagingapi/v1
+  - url: https://{hostname}:{port}/stagingapi/v1
     description: Development server
     variables:
       hostname:
