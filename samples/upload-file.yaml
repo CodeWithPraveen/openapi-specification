@@ -1,0 +1,85 @@
+openapi: 3.0.3
+info:
+  title: Upload file samples
+  description: Sample definition that shows how to upload files in OpenAPI
+  version: '1.0'
+tags: 
+  - name: files
+paths:
+  /uploadPngFile:
+    summary: Operations about image files
+    description: Shows the API usage with respect to file usage in OpenAPI
+    post:
+      tags:
+        - files
+      summary: Upload a png file
+      operationId: uploadPngFile
+      requestBody:
+        description: The file to upload
+        content:
+          image/png:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: Successfully uploaded the file
+        4XX:
+          description: Bad Request
+        5XX:
+          description: Internal Server Error
+        default:
+          description: Success
+  /uploadAnyFile:
+    summary: Operations about general files
+    description: Shows the API usage with respect to file usage in OpenAPI
+    post:
+      tags:
+        - files
+      summary: Upload a single file
+      operationId: uploadSingleFile
+      requestBody:
+        description: The file to upload
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: Successfully uploaded the file
+        4XX:
+          description: Bad Request
+        5XX:
+          description: Internal Server Error
+        default:
+          description: Success
+  /uploadDataAndFile:
+    summary: Operations about multiple fields with files
+    description: Shows the API usage with respect to file usage in OpenAPI
+    post:
+      tags:
+        - files
+      summary: Upload a single file with other data
+      operationId: uploadFileWithData
+      requestBody:
+        description: Multipart example
+        content:
+          multipart:
+            schema:
+              type: object
+              properties:
+                fileName:
+                  type: string
+                file:
+                  type: string
+                  format: base64
+      responses:
+        '200':
+          description: Successfully uploaded the file
+        4XX:
+          description: Bad Request
+        5XX:
+          description: Internal Server Error
+        default:
+          description: Success
